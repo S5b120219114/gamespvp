@@ -2,7 +2,8 @@
 
 Sitio web informativo/educativo sobre gaming: guías, técnicas y videos de
 **Minecraft PvP** (especialización), **Minecraft Speedrun**, **Cuphead**,
-**Hollow Knight**, **Recomendaciones** de salud/ergonomía y **Periféricos**.
+**Hollow Knight**, **Recomendaciones** de salud/ergonomía y **Periféricos**,
+además de dos categorías de contexto: **Conozcamos el tema** y **Mirada amplia**.
 
 SPA estática (HTML5 + CSS3 con custom properties + JavaScript vanilla con
 módulos ES) — **sin build step, lista para desplegar** (GitHub Pages,
@@ -31,11 +32,13 @@ js/
   main.js           · Punto de entrada (splash + arranque)
   router.js         · SPA hash-router (#/categoria), SEO, lazy-load de videos
   pages.js          · Renderizadores de cada categoría
-  ui.js             · Componentes: VideoCard, TechniqueCard, ProductCard…
-  data.js           · Catálogo de contenido (videos, técnicas, packs, productos)
+  ui.js             · Componentes: VideoCard, TechniqueCard, ProductCard, MediaFigure…
+  data.js           · Catálogo de contenido (videos, técnicas, packs, productos, nuevas categorías)
   i18n.js           · Diccionario ES/EN
   search.js         · Buscador global (fuzzy, agrupado por categoría)
   settings.js       · Panel de configuración + localStorage
+  topic.js          · Símbolo animado + explosión de "Conozcamos el tema"
+assets/             · Imágenes locales optimizadas (≈860 KB) con créditos en "Fuentes"
 fonts/
   Monocraft.ttf     · Fuente estilo chat de Minecraft (SIL OFL 1.1)
   Monocraft-Bold.ttf
@@ -54,6 +57,11 @@ fonts/
 | Videos | Embeds de YouTube 16:9 responsivos con `loading="lazy"` + `IntersectionObserver`, título visible y atribución al creador |
 | Accesibilidad | Contraste WCAG AA, skip-link, navegación por teclado, `aria-label`/`aria-expanded`, `focus-visible`, `prefers-reduced-motion` |
 | SEO | `<title>` y `meta description` por ruta (actualizados al navegar), Open Graph |
+| Conozcamos el tema | Explicación del proyecto + misión de gaming saludable, importancia para adolescentes (adicción, frustración, daños de muñeca/vista/espalda) y datos de Oxford a favor de los videojuegos |
+| Símbolo interactivo | Logo gigante de Games PvP que flota, se carga al hacer hover/foco y **explota** al hacer clic: 20 partículas radiales, onda de choque, revelado animado del contenido y salto a la primera sección. Accesible por teclado (`<button>`), aviso `aria-live` y respeto a `prefers-reduced-motion` |
+| Mirada amplia | Países donde se juega poco por censura/brecha/prohibición, escuelas con Minecraft Education, récords Guinness, Minecraft como patrimonio cultural (Library of Congress 2025), cuatro perspectivas contrapuestas y casos reales de Spreen e IShowSpeed |
+| Imágenes relacionadas | Figuras con pie de foto y crédito en PvP, Cuphead, Hollow Knight, Recomendaciones y en las dos nuevas categorías. Las 3 URLs externas aportadas tienen copia local de respaldo automática si el host las bloquea |
+| Fuentes ampliadas | Nuevas secciones de referencias: salud/bienestar, contexto y récords, streamers y créditos de imágenes |
 
 ## 🔤 Tipografías y licencias
 
@@ -109,3 +117,50 @@ Mayo Clinic (ergonomía de oficina), American Academy of Ophthalmology
 (20-20-20, iluminación, ojo seco), CDC (actividad física, hidratación) y
 Harvard Health (síndrome del túnel carpiano). Enlaces exactos en
 `js/data.js` → `SOURCES` y compilados en la página **Fuentes**.
+
+## 🧭 Nuevas categorías (2026)
+
+El menú pasó de 8 a **10 categorías** y todo el texto nuevo está escrito en **modo resumen**: frases cortas, tono gamer, misma información y las mismas fuentes. Las dos nuevas se sitúan justo después
+de *Introducción* y están traducidas al 100 % en ES/EN:
+
+| Ruta | Contenido |
+|---|---|
+| `#/conoce-el-tema` · **Conozcamos el tema** | 1) Qué es Games PvP y su misión de gaming saludable. 2) Adolescentes: adicción, frustración y lesiones (muñecas, vista, sueño). 3) Dato Oxford: 39 k jugadores (2022) y 72 % de mejor ánimo (2024). |
+| `#/mirada-amplia` · **Mirada amplia** | 1) Corea del Norte, Eritrea y China (2000–2015): censura, brecha y prohibición. 2) Escuelas: Viktor Rydberg, Minecraft Education (140 países), Block by Block y Halmstad. 3) Récords Guinness y *Volume Alpha* en la Library of Congress (2025). 4) Cuatro miradas contrastadas. 5) Spreen e IShowSpeed + galería. |
+
+### Interacción del símbolo
+
+`js/topic.js` inicializa el emblema tras cada render del router:
+
+- Flotado continuo (`gp-float`, 3.4 s).
+- Hover/foco: animación `gp-float-hover` (escala 1.07 + rotación) y anillo
+  giratorio acelerado.
+- Clic: `is-exploding` → 20 partículas radiales (`--tx/--ty/--r/--delay`),
+  onda de choque, explosión del núcleo, `aria-live` y `scrollIntoView` a
+  `#tema-explicacion`; el contenido se revela con `gp-reveal`.
+- Se puede repetir: tras 1.15 s el símbolo vuelve con `gp-return`.
+- Con `prefers-reduced-motion` se omiten partículas y animaciones y solo se
+  revela el contenido.
+
+### Fuentes nuevas
+
+Todas las afirmaciones de las nuevas categorías enlazan a fuentes reales
+(`EXTRA_SOURCES` en `js/data.js`) y se compilan en la página **Fuentes**:
+OMS (gaming disorder, CIE-11), Universidad de Oxford / Oxford Internet
+Institute (2022 y 2024), Library of Congress, Guinness World Records,
+Minecraft Education, Block by Block, PC Gamer, Halmstads kommun, CPJ,
+Wikipedia (censura en Corea del Norte), The Verge, BBC, AP News, TIME y Forbes.
+
+### Imágenes
+
+Las imágenes viven en `assets/` y están optimizadas (JPEG progresivo / WebP,
+máx. 1200 px). Son imágenes de terceros usadas con **finalidad educativa**;
+cada una muestra su crédito al pie y aparece listada en la sección
+*Créditos de imágenes* de la página **Fuentes**. Si necesitas sustituir
+alguna, basta con reemplazar el archivo —las rutas están centralizadas en
+`js/data.js` (`CATEGORY_IMAGES`, `STREAMER_CASES`, `STREAMER_GALLERY`,
+`RECORD_CARDS`, `SCHOOL_EXAMPLES`, `TOPIC_BLOCKS`).
+
+Las tres URLs externas aportadas para la galería de Spreen e IShowSpeed se
+cargan directamente; si el host remoto bloquea la petición, el listener
+global de `js/main.js` cambia el `src` por su copia local (`data-fallback`).

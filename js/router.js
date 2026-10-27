@@ -10,6 +10,7 @@ import { CATEGORIES } from './data.js';
 import { t, applyStaticI18n } from './i18n.js';
 import { PAGES } from './pages.js';
 import { esc } from './ui.js';
+import { initTopicEmblem } from './topic.js';
 
 /* Carga perezosa de embeds de YouTube (IntersectionObserver) */
 const lazyIO = new IntersectionObserver(
@@ -59,6 +60,8 @@ function renderNav() {
 function metaDescription(id) {
   const map = {
     introduccion: t('introText'),
+    'conoce-el-tema': t('conozcamosLead'),
+    'mirada-amplia': t('miradaLead'),
     'minecraft-pvp': t('pvpLead'),
     'minecraft-speedrun': t('speedrunLead'),
     cuphead: t('cupheadLead'),
@@ -91,8 +94,9 @@ function render() {
   /* Sección activa → tipografía condicional vía body[data-section] */
   document.body.dataset.section = id;
 
-  /* SEO */
-  document.title = `${cat?.label ?? 'Games PvP'} — Games PvP`;
+  /* SEO: las etiquetas de categoría traducibles también van al <title> */
+  const titleLabel = cat?.key ? t(cat.key) : (cat?.label ?? 'Games PvP');
+  document.title = `${titleLabel} — Games PvP`;
   const meta = document.querySelector('meta[name="description"]');
   if (meta) meta.setAttribute('content', metaDescription(id));
 
@@ -104,12 +108,25 @@ function render() {
   /* Embeds diferidos */
   initLazyVideos();
 
+  /* Símbolo animado de "Conozcamos el tema" */
+  initTopicEmblem();
+
+  /* Enlaces internos con ancla (botones CTA de las nuevas categorías) */
+  main.querySelectorAll('[data-go-route]').forEach((a) => {
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      navigate(a.dataset.goRoute, a.dataset.goAnchor || null);
+    });
+  });
+
   /* Anclas internas (sub-nav de Minecraft PVP) */
   main.querySelectorAll('[data-scroll]').forEach((btn) => {
     btn.addEventListener('click', () => {
       const target = document.getElementById(btn.dataset.scroll);
       if (target) {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (typeof target.scrollIntoView === 'function') {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
         main.querySelectorAll('[data-scroll]').forEach((b) => b.classList.remove('is-active'));
         btn.classList.add('is-active');
       }
@@ -120,13 +137,17 @@ function render() {
   if (pendingAnchor) {
     const el = document.getElementById(pendingAnchor);
     if (el) {
-      el.scrollIntoView({ behavior: 'instant', block: 'start' });
+      if (typeof el.scrollIntoView === 'function') {
+        el.scrollIntoView({ behavior: 'instant', block: 'start' });
+      }
       pendingAnchor = null;
       return;
     }
     pendingAnchor = null;
   }
-  window.scrollTo({ top: 0, behavior: 'instant' });
+  if (typeof window.scrollTo === 'function') {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }
 }
 
 /** Navega a una ruta (usado por el buscador). */

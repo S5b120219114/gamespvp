@@ -18,9 +18,15 @@ import {
   HOLLOW_VIDEOS,
   HEALTH_GROUPS,
   PERIPHERAL_BLOCKS,
+  TOPIC_BLOCKS,
+  WORLD_EXAMPLES,
+  SCHOOL_EXAMPLES,
+  RECORD_CARDS,
+  PERSPECTIVES,
+  STREAMER_CASES,
 } from './data.js';
 import { t, getLang } from './i18n.js';
-import { esc } from './ui.js';
+import { esc, pick } from './ui.js';
 
 /* ── Índice de búsqueda ── */
 
@@ -47,6 +53,34 @@ export function buildIndex() {
     });
 
   const catLabel = (id) => CATEGORIES.find((c) => c.id === id)?.label ?? id;
+
+  /* Conozcamos el tema: explicación, adolescentes y dato interesante */
+  for (const b of TOPIC_BLOCKS) {
+    const extra = [b.lead, ...b.body, ...(b.bullets ?? []), ...(b.stats ?? []).map(
+      (s) => `${s.value} ${pick(s.label)}`
+    )].map(pick).join(' ');
+    add(pick(b.title), `${catLabel('conoce-el-tema')} · ${pick(b.label)}`, 'conoce-el-tema', '/conoce-el-tema', b.id, extra);
+  }
+
+  /* Mirada amplia: países, escuelas, récords, perspectivas y streamers */
+  for (const w of WORLD_EXAMPLES) {
+    add(pick(w.place), `${catLabel('mirada-amplia')} · ${pick(w.title)}`, 'mirada-amplia', '/mirada-amplia', 'mundo-paises',
+      `${pick(w.body)} ${pick(w.cause)} ${pick(w.effect)}`);
+  }
+  for (const s of SCHOOL_EXAMPLES) {
+    add(pick(s.title), `${catLabel('mirada-amplia')} · ${pick(s.place)}`, 'mirada-amplia', '/mirada-amplia', 'mundo-escuelas', pick(s.body));
+  }
+  for (const r of RECORD_CARDS) {
+    add(pick(r.title), `${catLabel('mirada-amplia')} · ${pick(r.kind)}`, 'mirada-amplia', '/mirada-amplia', 'mundo-records', pick(r.body));
+  }
+  for (const p of PERSPECTIVES) {
+    add(pick(p.title), catLabel('mirada-amplia'), 'mirada-amplia', '/mirada-amplia', 'mundo-perspectivas',
+      `${pick(p.claim)} ${pick(p.case)} ${pick(p.reply)}`);
+  }
+  for (const s of STREAMER_CASES) {
+    add(s.name, `${catLabel('mirada-amplia')} · ${pick(s.badge)}`, 'mirada-amplia', '/mirada-amplia', 'mundo-streamers',
+      `${s.realName} ${pick(s.text)}`);
+  }
 
   /* Minecraft PVP: subsecciones + videos + packs */
   for (const s of PVP_SECTIONS) {
