@@ -47,6 +47,21 @@ function boot() {
   /* Router SPA */
   initRouter();
 
+  /* Si una imagen remota de la galería no carga (bloqueo del host),
+     se sustituye automáticamente por su copia local equivalente. */
+  document.addEventListener(
+    'error',
+    (e) => {
+      const img = e.target;
+      if (!(img instanceof HTMLImageElement)) return;
+      const fallback = img.dataset.fallback;
+      if (!fallback || img.dataset.fallbackUsed) return;
+      img.dataset.fallbackUsed = '1';
+      img.src = fallback;
+    },
+    true
+  );
+
   /* Año del footer */
   const year = document.getElementById('year');
   if (year) year.textContent = String(new Date().getFullYear());

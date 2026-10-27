@@ -44,6 +44,19 @@ const ICON_PATHS = {
   sword: '<polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5"/><line x1="13" y1="19" x2="19" y2="13"/><line x1="16" y1="16" x2="20" y2="20"/><line x1="19" y1="21" x2="21" y2="19"/>',
   book: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>',
   package: '<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/>',
+  target: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
+  users: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+  sparkles: '<path d="M12 3l1.6 4.4L18 9l-4.4 1.6L12 15l-1.6-4.4L6 9l4.4-1.6z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/><path d="M5 14l.6 1.4L7 16l-1.4.6L5 18l-.6-1.4L3 16l1.4-.6z"/>',
+  globe: '<circle cx="12" cy="12" r="9"/><line x1="3" y1="12" x2="21" y2="12"/><path d="M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/>',
+  school: '<path d="M3 9l9-5 9 5-9 5z"/><path d="M7 11v5c0 1.1 2.2 3 5 3s5-1.9 5-3v-5"/><line x1="21" y1="9" x2="21" y2="15"/>',
+  music: '<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>',
+  trophy: '<path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3"/><path d="M7 5H4v2a3 3 0 0 0 3 3"/>',
+  alert: '<path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>',
+  trending: '<polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>',
+  heart: '<path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/>',
+  lightbulb: '<path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.1 14.6A6 6 0 1 0 9 14.6a4 4 0 0 0-.6 2.4h7.2a4 4 0 0 0-.5-2.4z"/>',
+  zap: '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>',
+  arrow: '<line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/>',
 };
 
 /** Devuelve un icono SVG inline (estilo line-icons). */
@@ -158,4 +171,78 @@ export function refItem({ text, url }) {
       ${esc(text)}
       <a class="ref-url" href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(url)}</a>
     </li>`;
+}
+
+/* ── Componentes de las nuevas categorías ──────────────────────────────── */
+
+/**
+ * Etiqueta <img> con carga diferida. Si la imagen remota falla, el listener
+ * global de js/main.js sustituye el src por data-fallback (una copia local).
+ */
+export function imgTag(image, className = '') {
+  if (!image) return '';
+  const fallback = image.fallback ? ` data-fallback="${esc(image.fallback)}"` : '';
+  return `<img class="${esc(className)}" src="${esc(image.src)}" alt="${esc(pick(image.alt))}" loading="lazy" decoding="async"${fallback} />`;
+}
+
+/** Figura con imagen + pie de foto + crédito al autor/fuente. */
+export function mediaFigure(image, className = '') {
+  if (!image) return '';
+  const cap = image.caption ? `<span>${esc(pick(image.caption))}</span>` : '';
+  const credit = image.credit
+    ? ` <a class="media-credit" href="${esc(image.creditUrl ?? '#/fuentes')}" target="_blank" rel="noopener noreferrer">${esc(t('imgCredit'))}: ${esc(image.credit)}</a>`
+    : '';
+  const fitClass = image.fit === 'contain' ? 'media-figure--contain' : '';
+  return `
+    <figure class="media-figure ${esc(className)} ${fitClass}">
+      ${imgTag(image)}
+      ${cap || credit ? `<figcaption>${cap}${credit}</figcaption>` : ''}
+    </figure>`;
+}
+
+/** Fila de enlaces a fuentes externas. */
+export function sourceLinks(sources) {
+  if (!sources || !sources.length) return '';
+  return `
+    <div class="source-row">
+      <span class="source-row__label">${esc(t('sourcesLabel'))}:</span>
+      ${sources
+        .map(
+          (s) =>
+            `<a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.name)}</a>`
+        )
+        .join('')}
+    </div>`;
+}
+
+/** Chips de cifras destacadas (estadísticas). */
+export function statChips(stats) {
+  if (!stats || !stats.length) return '';
+  return `
+    <div class="stat-row">
+      ${stats
+        .map(
+          (s) => `
+        <div class="stat-chip">
+          <strong>${esc(s.value)}</strong>
+          <span>${esc(pick(s.label))}</span>
+        </div>`
+        )
+        .join('')}
+    </div>`;
+}
+
+/** Cabecera de sección reutilizable (H2 + texto guía). */
+export function sectionHead(title, lead, extraClass = '') {
+  return `
+    <div class="section-head ${esc(extraClass)}">
+      <h2>${esc(title)}</h2>
+      ${lead ? `<p>${esc(lead)}</p>` : ''}
+    </div>`;
+}
+
+/** Lista de viñetas traducibles. */
+export function bulletList(items) {
+  if (!items || !items.length) return '';
+  return `<ul class="bullet-list">${items.map((b) => `<li>${esc(pick(b))}</li>`).join('')}</ul>`;
 }
