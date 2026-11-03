@@ -138,6 +138,9 @@ export function buildIndex() {
     }
   }
 
+  /* Formulario (Punteame) */
+  add('Punteame', `${catLabel('formulario')} · Google Forms`, 'formulario', '/formulario', null, t('formularioLead'));
+
   INDEX = entries;
 }
 

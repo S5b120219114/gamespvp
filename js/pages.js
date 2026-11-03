@@ -25,6 +25,7 @@ import {
   STREAMER_GALLERY,
   CATEGORY_IMAGES,
   MEDIA_CREDITS,
+  FORM_URL,
   ytWatch,
 } from './data.js';
 import { t, getLang } from './i18n.js';
@@ -503,6 +504,21 @@ function renderPerifericos() {
     </div>`;
 }
 
+/* ── FORMULARIO (Punteame) ── */
+function renderFormulario() {
+  return `
+    <div class="container">
+      <header class="page-head"><h1>Punteame</h1></header>
+      <div class="form-embed">
+        <iframe
+          src="${esc(FORM_URL)}"
+          title="Punteame"
+          referrerpolicy="no-referrer-when-downgrade"
+        >Cargando el formulario…</iframe>
+      </div>
+    </div>`;
+}
+
 /* ── FUENTES (referencias tipo APA simplificado) ── */
 function renderFuentes() {
   /* 1. Videos agrupados por categoría de origen */
@@ -628,5 +644,6 @@ export const PAGES = {
   'hollow-knight': renderHollowKnight,
   recomendaciones: renderRecomendaciones,
   perifericos: renderPerifericos,
+  formulario: renderFormulario,
   fuentes: renderFuentes,
 };

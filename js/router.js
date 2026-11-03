@@ -68,6 +68,7 @@ function metaDescription(id) {
     'hollow-knight': t('hollowLead'),
     recomendaciones: t('recomendacionesLead'),
     perifericos: t('perifericosLead'),
+    formulario: t('formularioLead'),
     fuentes: t('fuentesLead'),
   };
   return (map[id] ?? 'Games PvP').slice(0, 160);

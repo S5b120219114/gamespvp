@@ -29,6 +29,7 @@ const STRINGS = {
     miradaAmplia: 'Mirada amplia',
     recomendaciones: 'Recomendaciones',
     perifericos: 'Periféricos',
+    formulario: 'Formulario',
     fuentes: 'Fuentes',
 
     /* Configuración */
@@ -122,6 +123,7 @@ const STRINGS = {
     hollowSection: 'Hollow Knight Crazy Guides',
     recomendacionesLead: 'Cuida tu cuerpo mientras juegas: postura, vista y descansos basados en fuentes médicas.',
     perifericosLead: 'Periféricos recomendados por juego, con especificaciones clave y enlaces oficiales.',
+    formularioLead: 'Formulario de Games PvP: responde las preguntas y puntéanos.',
     fuentesLead: 'Todas las URLs y créditos usados en Games PvP, organizados por categoría de origen.',
     refsYoutube: 'Videos de YouTube',
     refsPacks: 'Texture Packs',
@@ -173,6 +175,7 @@ const STRINGS = {
     miradaAmplia: 'A wider look',
     recomendaciones: 'Recommendations',
     perifericos: 'Peripherals',
+    formulario: 'Form',
     fuentes: 'Sources',
 
     /* Settings */
@@ -266,6 +269,7 @@ const STRINGS = {
     hollowSection: 'Hollow Knight Crazy Guides',
     recomendacionesLead: 'Take care of your body while gaming: posture, eyesight and breaks based on medical sources.',
     perifericosLead: 'Recommended peripherals per game, with key specs and official links.',
+    formularioLead: 'Games PvP form: answer the questions and rate us.',
     fuentesLead: 'All URLs and credits used in Games PvP, organized by source category.',
     refsYoutube: 'YouTube videos',
     refsPacks: 'Texture Packs',
