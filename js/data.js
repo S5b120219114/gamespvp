@@ -17,6 +17,10 @@ export const ytWatch = (id, start = 0) =>
   `https://www.youtube.com/watch?v=${id}${start ? `&t=${start}s` : ''}`;
 
 /* ── Categorías (orden exacto del menú; nombres NUNCA se traducen) ── */
+/** Google Form oficial de Games PvP (Punteame), embebido en la categoría Formulario. */
+export const FORM_URL =
+  'https://docs.google.com/forms/d/e/1FAIpQLSc-ZbVR-8Im_JheXr2BS8RPNnK1ySfBCkxkkY7t_Xd42xDVSQ/viewform?usp=header';
+
 export const CATEGORIES = [
   { id: 'introduccion',       path: '/introduccion',       label: 'Introducción',        key: 'introduccion' },
   { id: 'conoce-el-tema',     path: '/conoce-el-tema',     label: 'Conozcamos el tema',  key: 'conozcamos' },
@@ -27,6 +31,7 @@ export const CATEGORIES = [
   { id: 'hollow-knight',      path: '/hollow-knight',      label: 'Hollow Knight' },
   { id: 'recomendaciones',    path: '/recomendaciones',    label: 'Recomendaciones',     key: 'recomendaciones' },
   { id: 'perifericos',        path: '/perifericos',        label: 'Periféricos',         key: 'perifericos' },
+  { id: 'formulario',         path: '/formulario',         label: 'Formulario',          key: 'formulario' },
   /* Categoría final (también accesible desde el footer) */
   { id: 'fuentes',            path: '/fuentes',            label: 'Fuentes',             key: 'fuentes' },
 ];
