@@ -24,6 +24,8 @@ import {
   RECORD_CARDS,
   PERSPECTIVES,
   STREAMER_CASES,
+  UTIL_SECTIONS,
+  PROPOSAL,
 } from './data.js';
 import { t, getLang } from './i18n.js';
 import { esc, pick } from './ui.js';
@@ -137,6 +139,28 @@ export function buildIndex() {
       }
     }
   }
+
+  /* Información útil: consejos, estrategias, pasos, ejemplos y recursos */
+  for (const s of UTIL_SECTIONS) {
+    const extraParts = [s.lead];
+    if (s.bullets) extraParts.push(...s.bullets);
+    if (s.items) for (const it of s.items) extraParts.push(...[it.title, it.desc, it.problem, it.solution].filter(Boolean));
+    if (s.blocks) for (const b of s.blocks) extraParts.push(b.title, ...b.steps);
+    if (s.videos) for (const v of s.videos) extraParts.push(v.title, v.creator ?? '');
+    add(pick(s.title), `${catLabel('informacion-util')} · ${pick(s.label)}`, 'informacion-util', '/informacion-util', s.id,
+      extraParts.map((p) => (typeof p === 'string' ? p : pick(p))).join(' '));
+  }
+
+  /* Mi propuesta: reto, checklist, recursos, propuesta y conclusión */
+  const P = PROPOSAL;
+  add(pick(P.reto.title), `${catLabel('mi-propuesta')} · ${pick(P.reto.lead)}`, 'mi-propuesta', '/mi-propuesta', 'propuesta-reto',
+    P.reto.rules.map(pick).join(' '));
+  add(pick(P.checklist.title), catLabel('mi-propuesta'), 'mi-propuesta', '/mi-propuesta', 'propuesta-checklist',
+    P.checklist.items.map(pick).join(' '));
+  add(pick(P.propuesta.title), catLabel('mi-propuesta'), 'mi-propuesta', '/mi-propuesta', 'propuesta-propia',
+    `${P.propuesta.body.map(pick).join(' ')} ${P.propuesta.bullets.map(pick).join(' ')}`);
+  add(pick(P.conclusion.title), catLabel('mi-propuesta'), 'mi-propuesta', '/mi-propuesta', 'propuesta-conclusion',
+    P.conclusion.body.map(pick).join(' '));
 
   /* Formulario (Punteame) */
   add('Punteame', `${catLabel('formulario')} · Google Forms`, 'formulario', '/formulario', null, t('formularioLead'));

@@ -119,10 +119,13 @@ export function techniqueCard(tech, index) {
 
 /** ProductCard: imagen placeholder, nombre, specs y botón "Ver producto". */
 export function productCard(p) {
+  const media = p.img
+    ? imgTag({ src: p.img, alt: { es: p.name, en: p.name } }, 'product-media__img')
+    : icon('package');
   return `
     <article class="card product-card">
       <div class="product-media" role="img" aria-label="${esc(p.name)}">
-        ${icon('package')}
+        ${media}
       </div>
       <span class="product-tag">${esc(p.tag)}</span>
       <h3>${esc(p.name)}</h3>

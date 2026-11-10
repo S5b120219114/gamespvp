@@ -120,13 +120,16 @@ Harvard Health (síndrome del túnel carpiano). Enlaces exactos en
 
 ## 🧭 Nuevas categorías (2026)
 
-El menú pasó de 8 a **10 categorías** y todo el texto nuevo está escrito en **modo resumen**: frases cortas, tono gamer, misma información y las mismas fuentes. Las dos nuevas se sitúan justo después
-de *Introducción* y están traducidas al 100 % en ES/EN:
+El menú pasó de 8 a **13 categorías** y todo el texto nuevo está escrito en **modo resumen**: frases cortas, tono gamer, misma información y las mismas fuentes. Las nuevas categorías se sitúan siguiendo la estructura oficial del proyecto (Inicio → Conozcamos el tema → Información útil → Mirada amplia → … → Mi propuesta) y están traducidas al 100 % en ES/EN:
 
 | Ruta | Contenido |
 |---|---|
-| `#/conoce-el-tema` · **Conozcamos el tema** | 1) Qué es Games PvP y su misión de gaming saludable. 2) Adolescentes: adicción, frustración y lesiones (muñecas, vista, sueño). 3) Dato Oxford: 39 k jugadores (2022) y 72 % de mejor ánimo (2024). |
-| `#/mirada-amplia` · **Mirada amplia** | 1) Corea del Norte, Eritrea y China (2000–2015): censura, brecha y prohibición. 2) Escuelas: Viktor Rydberg, Minecraft Education (140 países), Block by Block y Halmstad. 3) Récords Guinness y *Volume Alpha* en la Library of Congress (2025). 4) Cuatro miradas contrastadas. 5) Spreen e IShowSpeed + galería. |
+| `#/conoce-el-tema` · **Conozcamos el tema** | 1) Qué es Games PvP y su misión de gaming saludable. 2) Adolescentes: adicción, frustración y lesiones (muñecas, vista, sueño). 3) Conceptos principales (glosario gamer). 4) Dato Oxford: 39 k jugadores (2022) y 72 % de mejor ánimo (2024). |
+| `#/informacion-util` · **Información útil** | Consejos, Estrategias, Recomendaciones, Pasos o soluciones, Ejemplos y Recursos visuales: lo útil reunido con enlaces a las guías profundas. |
+| `#/mirada-amplia` · **Mirada amplia** | 1) Corea del Norte, Eritrea y China (2000–2015): censura, brecha y prohibición. 2) Comparaciones (prohibir vs. enseñar). 3) Escuelas: Viktor Rydberg, Minecraft Education (140 países), Block by Block y Halmstad. 4) Récords Guinness y *Volume Alpha* en la Library of Congress (2025). 5) Cuatro miradas contrastadas. 6) Spreen e IShowSpeed + galería. 7) Qué podemos aprender de otras realidades. |
+| `#/mi-propuesta` · **Mi propuesta / Recursos** | Reto o actividad (Reto 7 días GG), Checklist, Recursos útiles, Propuesta propia (plan GG) y Conclusión con CTA al formulario. |
+
+La portada incluye además imagen principal (`assets/home-hero.jpg`, creada para el sitio), frase de presentación y botón de llamada a la acción.
 
 ### Interacción del símbolo
 
