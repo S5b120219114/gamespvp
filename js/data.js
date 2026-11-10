@@ -24,6 +24,7 @@ export const FORM_URL =
 export const CATEGORIES = [
   { id: 'introduccion',       path: '/introduccion',       label: 'Introducción',        key: 'introduccion' },
   { id: 'conoce-el-tema',     path: '/conoce-el-tema',     label: 'Conozcamos el tema',  key: 'conozcamos' },
+  { id: 'informacion-util',   path: '/informacion-util',   label: 'Información útil',    key: 'informacionUtil' },
   { id: 'mirada-amplia',      path: '/mirada-amplia',      label: 'Mirada amplia',       key: 'miradaAmplia' },
   { id: 'minecraft-pvp',      path: '/minecraft-pvp',      label: 'Minecraft PVP' },
   { id: 'minecraft-speedrun', path: '/minecraft-speedrun', label: 'Minecraft Speedrun' },
@@ -31,6 +32,7 @@ export const CATEGORIES = [
   { id: 'hollow-knight',      path: '/hollow-knight',      label: 'Hollow Knight' },
   { id: 'recomendaciones',    path: '/recomendaciones',    label: 'Recomendaciones',     key: 'recomendaciones' },
   { id: 'perifericos',        path: '/perifericos',        label: 'Periféricos',         key: 'perifericos' },
+  { id: 'mi-propuesta',       path: '/mi-propuesta',       label: 'Mi propuesta',        key: 'miPropuesta' },
   { id: 'formulario',         path: '/formulario',         label: 'Formulario',          key: 'formulario' },
   /* Categoría final (también accesible desde el footer) */
   { id: 'fuentes',            path: '/fuentes',            label: 'Fuentes',             key: 'fuentes' },
@@ -391,7 +393,8 @@ export const PERIPHERAL_BLOCKS = [
         products: [
           {
             name: 'Bloody A70 II',
-            tag: 'Bloody',
+
+img: 'assets/prod-bloody-a70.jpg',            tag: 'Bloody',
             spec: 'Interruptores ópticos Light Strike — ideales para drag click / butterfly click',
             desc: {
               es: 'Mouse orientado al PvP clásico de Minecraft: sus interruptores ópticos y superficie lo hacen especialmente apto para drag click y butterfly click.',
@@ -401,7 +404,8 @@ export const PERIPHERAL_BLOCKS = [
           },
           {
             name: 'Razer Viper V3 Pro',
-            tag: 'Razer',
+
+img: 'assets/prod-viper-v3-pro.jpg',            tag: 'Razer',
             spec: '54 g — polling rate de 8000 Hz',
             desc: {
               es: 'Ultraligero (54 g) con polling de 8000 Hz: seguimiento preciso y latencia mínima para intercambios rápidos.',
@@ -411,7 +415,8 @@ export const PERIPHERAL_BLOCKS = [
           },
           {
             name: 'Logitech G PRO X Superlight 2',
-            tag: 'Logitech G',
+
+img: 'assets/prod-gpx-superlight-2.jpg',            tag: 'Logitech G',
             spec: 'Sensor HERO 2 — interruptores híbridos óptico-mecánicos (LIGHTFORCE)',
             desc: {
               es: 'El estándar competitivo: sensor HERO 2, interruptores híbridos óptico-mecánicos y hasta 95 h de batería.',
@@ -428,7 +433,8 @@ export const PERIPHERAL_BLOCKS = [
         products: [
           {
             name: 'Wooting 60HE+',
-            tag: 'Wooting',
+
+img: 'assets/prod-wooting-60he.jpg',            tag: 'Wooting',
             spec: 'Switches magnéticos Hall Effect (Lekker L60) — Rapid Trigger',
             desc: {
               es: 'Teclado magnético compacto con Rapid Trigger: registra el punto de reposo en tiempo real, ideal para strafes y w-taps.',
@@ -438,7 +444,8 @@ export const PERIPHERAL_BLOCKS = [
           },
           {
             name: 'SteelSeries Apex Pro Mini',
-            tag: 'SteelSeries',
+
+img: 'assets/prod-apex-pro-mini.jpg',            tag: 'SteelSeries',
             spec: 'Punto de actuación ajustable desde 0.1 mm (OmniPoint 2.0)',
             desc: {
               es: 'Formato 60% con switches magnéticos OmniPoint 2.0 y actuación ajustable desde 0.1 mm.',
@@ -461,7 +468,8 @@ export const PERIPHERAL_BLOCKS = [
         products: [
           {
             name: 'Logitech G PRO X Superlight 2',
-            tag: 'Logitech G',
+
+img: 'assets/prod-gpx-superlight-2.jpg',            tag: 'Logitech G',
             spec: 'Ergonómico y ligero (60 g)',
             desc: {
               es: 'Ergonomía y peso mínimo para sesiones largas de platforming y speedruns sin fatiga.',
@@ -471,7 +479,8 @@ export const PERIPHERAL_BLOCKS = [
           },
           {
             name: 'Razer Viper V3 Pro',
-            tag: 'Razer',
+
+img: 'assets/prod-viper-v3-pro.jpg',            tag: 'Razer',
             spec: 'Latencia ultrabaja en clics (8000 Hz)',
             desc: {
               es: 'Latencia ultrabaja en los clics: inputs exactos para dash, parry y ráfagas de ataques.',
@@ -488,7 +497,8 @@ export const PERIPHERAL_BLOCKS = [
         products: [
           {
             name: 'Wooting 60HE+',
-            tag: 'Wooting',
+
+img: 'assets/prod-wooting-60he.jpg',            tag: 'Wooting',
             spec: 'Rapid Trigger — saltos y dash precisos',
             desc: {
               es: 'Rapid Trigger para saltos y dashes precisos en Hollow Knight y Cuphead.',
@@ -498,7 +508,8 @@ export const PERIPHERAL_BLOCKS = [
           },
           {
             name: 'Razer Huntsman V3 Pro',
-            tag: 'Razer',
+
+img: 'assets/prod-huntsman-v3-pro.jpg',            tag: 'Razer',
             spec: 'Switches óptico-analógicos Gen-2 — Snap Tap',
             desc: {
               es: 'Switches óptico-analógicos Gen-2 con Snap Tap: movimiento y técnicas avanzadas de input.',
@@ -508,7 +519,8 @@ export const PERIPHERAL_BLOCKS = [
           },
           {
             name: 'SteelSeries Apex Pro Mini',
-            tag: 'SteelSeries',
+
+img: 'assets/prod-apex-pro-mini.jpg',            tag: 'SteelSeries',
             spec: 'Formato 60% — actuación magnética',
             desc: {
               es: 'Formato compacto 60% con actuación magnética para respuestas inmediatas.',
@@ -658,6 +670,29 @@ export const TOPIC_BLOCKS = [
     cta: { label: { es: 'Cuidar mis muñecas', en: 'Protect my wrists' }, route: '/recomendaciones', anchor: 'salud-descansos' },
   },
   {
+    id: 'tema-conceptos',
+    icon: 'book',
+    label: { es: 'Conceptos', en: 'Concepts' },
+    title: { es: 'Conceptos principales', en: 'Key concepts' },
+    lead: { es: 'El idioma gamer, en cristiano.', en: 'Gamer lingo, plain and simple.' },
+    body: [
+      {
+        es: 'Estas son las palabras que vas a encontrar en las guías. Saberlas te ahorra frustración y te hace jugar mejor desde el minuto uno.',
+        en: 'These are the words you will meet in the guides. Knowing them saves frustration and makes you play better from minute one.',
+      },
+    ],
+    terms: [
+      { term: 'PvP', def: { es: 'Player vs Player: combate directo entre jugadores.', en: 'Player vs Player: direct combat between players.' } },
+      { term: 'CPS', def: { es: 'Clics por segundo: la velocidad a la que pulsas el ratón.', en: 'Clicks per second: how fast you click the mouse.' } },
+      { term: 'Keybinds', def: { es: 'Atajos de teclado: cada acción con su tecla.', en: 'Key bindings: one key per action.' } },
+      { term: 'Sensibilidad', def: { es: 'Cuánto gira la cámara al mover el ratón.', en: 'How much the camera turns when you move the mouse.' } },
+      { term: 'Speedrun', def: { es: 'Terminar el juego lo más rápido posible.', en: 'Finishing the game as fast as possible.' } },
+      { term: 'Grind', def: { es: 'Repetir tareas para mejorar o conseguir recursos.', en: 'Repeating tasks to improve or gather resources.' } },
+      { term: 'Rage quit', def: { es: 'Salir enfadado tras perder. Le pasa a todos: la clave es volver con cabeza.', en: 'Quitting angry after a loss. It happens to everyone: come back with a cool head.' } },
+      { term: 'Buff', def: { es: 'Mejora o ventaja. Dormir bien es el mejor buff del juego.', en: 'A boost or advantage. Good sleep is the best buff in the game.' } },
+    ],
+  },
+  {
     id: 'tema-dato',
     icon: 'sparkles',
     label: { es: 'Dato', en: 'Fun fact' },
@@ -681,6 +716,235 @@ export const TOPIC_BLOCKS = [
     source: EXTRA_SOURCES.oxford2022,
     source2: EXTRA_SOURCES.oxford2024,
   },
+];
+
+/* ── Imagen principal de la página de inicio ── */
+export const HOME_HERO = {
+  src: 'assets/home-hero.jpg',
+  alt: { es: 'Coliseo de Minecraft con graderías y pista de combate', en: 'Minecraft colosseum with stands and a combat floor' },
+  caption: { es: 'Arena de la comunidad: a entrenar.', en: 'Community arena: time to train.' },
+  credit: 'Imagen aportada para Games PvP',
+};
+
+/* ══════════════ INFORMACIÓN ÚTIL ══════════════ */
+export const UTIL_SECTIONS = [
+  {
+    id: 'util-consejos',
+    label: { es: 'Consejos', en: 'Tips' },
+    title: { es: 'Consejos', en: 'Tips' },
+    lead: { es: 'Rápidos, de verdad y sin sermones.', en: 'Quick, real and no sermons.' },
+    kind: 'bullets',
+    bullets: [
+      { es: 'Calienta muñecas y manos antes de entrar a ranked.', en: 'Warm up your wrists and hands before you queue up.' },
+      { es: 'Pausa de 5–10 min cada hora. Tu espalda lo nota.', en: 'Take a 5–10 min break every hour. Your back will notice.' },
+      { es: 'Postura: pies al suelo, pantalla a la altura de los ojos.', en: 'Posture: feet on the floor, screen at eye level.' },
+      { es: 'Antes de entrar, decide qué vas a practicar hoy.', en: 'Before you start, decide what you will practise today.' },
+    ],
+    cta: { label: { es: 'Ver salud y descansos', en: 'Health & breaks' }, route: '/recomendaciones' },
+  },
+  {
+    id: 'util-estrategias',
+    label: { es: 'Estrategias', en: 'Strategies' },
+    title: { es: 'Estrategias', en: 'Strategies' },
+    lead: { es: 'Lo mejor de cada guía, con acceso directo.', en: 'The best of each guide, one click away.' },
+    kind: 'links',
+    items: [
+      {
+        title: { es: 'Sword PvP: combos y reseteo', en: 'Sword PvP: combos and resets' },
+        desc: { es: 'Golpea, retrocede y encadena sin perder el ritmo.', en: 'Hit, step back and chain without losing rhythm.' },
+        route: '/minecraft-pvp', anchor: 'pvp-sword',
+      },
+      {
+        title: { es: 'UHC y Axe: timing de golpes', en: 'UHC & Axe: hit timing' },
+        desc: { es: 'Gestiona cooldowns y aprovecha cada golpe cargado.', en: 'Manage cooldowns and make every charged hit count.' },
+        route: '/minecraft-pvp', anchor: 'pvp-uhc-axe',
+      },
+      {
+        title: { es: 'Speedrun: rutas de bastión', en: 'Speedrun: bastion routes' },
+        desc: { es: 'Housing, Bridge, Treasure o Stables: elige y corre.', en: 'Housing, Bridge, Treasure or Stables: pick one and run.' },
+        route: '/minecraft-speedrun',
+      },
+      {
+        title: { es: 'Hollow Knight: rutas Any%', en: 'Hollow Knight: Any% routes' },
+        desc: { es: 'Saltos milimétricos y atajos explicados paso a paso.', en: 'Frame-perfect jumps and shortcuts explained step by step.' },
+        route: '/hollow-knight',
+      },
+    ],
+  },
+  {
+    id: 'util-recomendaciones',
+    label: { es: 'Recomendaciones', en: 'Recommendations' },
+    title: { es: 'Recomendaciones', en: 'Recommendations' },
+    lead: { es: 'Elige bien y entrena mejor.', en: 'Gear up smart, train better.' },
+    kind: 'bullets',
+    bullets: [
+      { es: 'Elige periféricos cómodos, no los más caros.', en: 'Pick comfortable peripherals, not the most expensive ones.' },
+      { es: 'Ajusta sensibilidad y keybinds a tu estilo.', en: 'Tune sensitivity and keybinds to your style.' },
+      { es: 'Aprende de guías hechas por jugadores top.', en: 'Learn from guides made by top players.' },
+      { es: 'Si algo duele, para. La ranked espera.', en: 'If something hurts, stop. Ranked can wait.' },
+    ],
+    cta: { label: { es: 'Ver periféricos', en: 'See peripherals' }, route: '/perifericos' },
+  },
+  {
+    id: 'util-pasos',
+    label: { es: 'Pasos o soluciones', en: 'Steps or solutions' },
+    title: { es: 'Pasos o soluciones', en: 'Steps or solutions' },
+    lead: { es: 'Problemas comunes, resueltos en pasos.', en: 'Common problems, solved in steps.' },
+    kind: 'steps',
+    blocks: [
+      {
+        title: { es: 'Configura tu sensibilidad en 5 pasos', en: 'Set your sensitivity in 5 steps' },
+        steps: [
+          { es: 'Entra en ajustes del juego y busca sensibilidad.', en: 'Open the game settings and find sensitivity.' },
+          { es: 'Empieza bajo: es más fácil subir que bajar.', en: 'Start low: raising it is easier than lowering it.' },
+          { es: 'Prueba 3 partidas seguidas sin cambiar nada.', en: 'Play 3 matches without changing anything.' },
+          { es: 'Ajusta solo un punto y repite la prueba.', en: 'Adjust by one notch only and test again.' },
+          { es: 'Guarda la configuración y anótala.', en: 'Save the setup and write it down.' },
+        ],
+      },
+      {
+        title: { es: 'Rutina 20-20-20 para tu vista', en: 'The 20-20-20 routine for your eyes' },
+        steps: [
+          { es: 'Cada 20 minutos, haz una pausa.', en: 'Every 20 minutes, take a break.' },
+          { es: 'Mira algo a unos 6 metros de distancia.', en: 'Look at something about 6 metres away.' },
+          { es: 'Mantén la mirada 20 segundos y parpadea.', en: 'Hold it for 20 seconds and blink.' },
+          { es: 'Vuelve a la partida con los ojos descansados.', en: 'Back to the game with rested eyes.' },
+        ],
+      },
+      {
+        title: { es: 'Protocolo anti rage-quit', en: 'Anti rage-quit protocol' },
+        steps: [
+          { es: 'Si mueres 3 veces seguidas, para 2 minutos.', en: 'If you die 3 times in a row, stop for 2 minutes.' },
+          { es: 'Bebe agua y estira la muñeca.', en: 'Drink some water and stretch your wrist.' },
+          { es: 'Revisa qué salió mal: sensibilidad, timing o cansancio.', en: 'Review what went wrong: sensitivity, timing or fatigue.' },
+          { es: 'Vuelve con una meta pequeña, no con rabia.', en: 'Come back with a small goal, not with rage.' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'util-ejemplos',
+    label: { es: 'Ejemplos', en: 'Examples' },
+    title: { es: 'Ejemplos', en: 'Examples' },
+    lead: { es: 'Así se ve jugar sin plan… y con él.', en: 'Playing with no plan looks like this… and with one, like that.' },
+    kind: 'examples',
+    items: [
+      {
+        tag: { es: 'Mal ejemplo', en: 'Bad example' },
+        title: { es: 'El que grindea sin objetivo', en: 'The autopilot grinder' },
+        problem: { es: '5 horas seguidas, mismos errores, muñecas doloridas y más frustración.', en: '5 straight hours, same mistakes, sore wrists and more frustration.' },
+        solution: { es: 'Horas de más no son progreso.', en: 'More hours do not mean progress.' },
+      },
+      {
+        tag: { es: 'Buen ejemplo', en: 'Good example' },
+        title: { es: 'El que entrena con meta', en: 'The purposeful player' },
+        problem: { es: '45 minutos de práctica con objetivo, pausa y estiramientos.', en: '45 minutes of goal-driven practice, a break and stretches.' },
+        solution: { es: 'Sube de nivel y llega entero al día siguiente.', en: 'Levels up and shows up fresh the next day.' },
+      },
+    ],
+  },
+  {
+    id: 'util-recursos',
+    label: { es: 'Recursos visuales', en: 'Visual resources' },
+    title: { es: 'Recursos visuales', en: 'Visual resources' },
+    lead: { es: 'Míralo, hazlo, entiéndelo.', en: 'Watch it, do it, get it.' },
+    kind: 'videos',
+    videos: [
+      { title: 'How to DOMINATE Minecraft PvP! (1.9-1.21)', yt: 'rA_7wmPG_bg', creator: 'Intel Edits' },
+      { title: 'TheoBaldTheBird Keybinds Guide', yt: '471bVlFOpwY', creator: 'TheoBaldTheBird' },
+    ],
+    image: {
+      src: 'assets/wrist-gaming.webp',
+      alt: { es: 'Jugador estirando la muñeca', en: 'Gamer stretching a wrist' },
+      caption: { es: 'Guía visual de estiramiento: hazlo entre partidas.', en: 'Visual stretch guide: do it between matches.' },
+      credit: 'Plarium', creditUrl: 'https://plarium.com/en/blog/wrist-pain-from-gaming-exercises-and-prevention-tips',
+    },
+  },
+];
+
+/* ══════════════ MI PROPUESTA / RECURSOS ══════════════ */
+export const PROPOSAL = {
+  reto: {
+    title: { es: 'Reto 7 días GG', en: '7-day GG challenge' },
+    lead: { es: 'Una semana jugando como se debe.', en: 'One week of playing properly.' },
+    rules: [
+      { es: '7 días jugando con pausa cada hora.', en: '7 days playing with a break every hour.' },
+      { es: '1 meta de práctica al día (sí, solo una).', en: '1 practice goal per day (yes, just one).' },
+      { es: 'Sin pantallas 1 hora antes de dormir.', en: 'No screens 1 hour before sleeping.' },
+      { es: 'Al terminar, cuéntalo en el formulario.', en: 'When you finish, tell us in the form.' },
+    ],
+  },
+  checklist: {
+    title: { es: 'Checklist: antes de entrar a la partida', en: 'Checklist: before you queue up' },
+    items: [
+      { es: 'Agua al lado de la mesa.', en: 'Water next to the desk.' },
+      { es: 'Muñecas y manos calentadas.', en: 'Wrists and hands warmed up.' },
+      { es: 'Meta del día decidida.', en: 'Today’s goal decided.' },
+      { es: 'Límite de tiempo marcado.', en: 'Time limit set.' },
+      { es: 'Postura correcta: espalda y pantalla.', en: 'Good posture: back and screen.' },
+      { es: 'Notificaciones y distractores cerrados.', en: 'Notifications and distractions closed.' },
+      { es: 'Pausas programadas en el reloj.', en: 'Breaks scheduled on the clock.' },
+      { es: 'Estirar 2 minutos al terminar.', en: 'Stretch for 2 minutes when you finish.' },
+    ],
+  },
+  recursos: [
+    { label: { es: 'Información útil', en: 'Useful info' }, route: '/informacion-util' },
+    { label: { es: 'Recomendaciones de salud', en: 'Health tips' }, route: '/recomendaciones' },
+    { label: { es: 'Periféricos', en: 'Peripherals' }, route: '/perifericos' },
+    { label: { es: 'Formulario (Punteame)', en: 'Form (Punteame)' }, route: '/formulario' },
+    { label: { es: 'Fuentes', en: 'Sources' }, route: '/fuentes' },
+  ],
+  propuesta: {
+    title: { es: 'Propuesta propia: el plan GG', en: 'My own proposal: the GG plan' },
+    body: [
+      {
+        es: 'Mi propuesta es simple: usar Games PvP como plan de juego sano. Tres pasos que cualquiera puede seguir sin dejar de competir.',
+        en: 'My proposal is simple: use Games PvP as a healthy play plan. Three steps anyone can follow without stopping competing.',
+      },
+    ],
+    bullets: [
+      { es: 'Aprende: guías reales de jugadores top, sin humo.', en: 'Learn: real guides from top players, zero fluff.' },
+      { es: 'Practica: con meta diaria, no en automático.', en: 'Practise: with a daily goal, not on autopilot.' },
+      { es: 'Cuídate: pausas, postura y sueño. Eso también es skill.', en: 'Take care: breaks, posture and sleep. That is skill too.' },
+    ],
+    callout: {
+      es: 'Jugar bien y cuidarse no son opuestos: son el mismo combo.',
+      en: 'Playing well and taking care of yourself are not opposites: they are the same combo.',
+    },
+  },
+  conclusion: {
+    title: { es: 'Conclusión', en: 'Conclusion' },
+    body: [
+      {
+        es: 'Los videojuegos no son el enemigo: jugar sin guía, sin límites y sin cuidado lo es. Con información útil, referencias reales y un plan propio, cualquiera puede disfrutar del gaming y seguir entero. GG WP.',
+        en: 'Video games are not the enemy: playing with no guide, no limits and no care is. With useful info, real references and a plan of your own, anyone can enjoy gaming and stay in one piece. GG WP.',
+      },
+    ],
+    cta: { label: { es: 'Puntéame', en: 'Rate me' }, route: '/formulario' },
+  },
+};
+
+/* ── Comparación de contextos (Mirada amplia) ── */
+export const COUNTRY_COMPARISON = [
+  {
+    place: { es: 'China (2000–2015)', en: 'China (2000–2015)' },
+    action: { es: 'Prohibió la venta de consolas para frenar el juego.', en: 'Banned console sales to curb gaming.' },
+    result: { es: 'El juego no desapareció: se fue a PC y móvil.', en: 'Gaming did not disappear: it moved to PC and mobile.' },
+    lesson: { es: 'Prohibir desplaza el problema, no lo resuelve.', en: 'Bans shift the problem, they do not solve it.' },
+  },
+  {
+    place: { es: 'Suecia (2013)', en: 'Sweden (2013)' },
+    action: { es: 'Minecraft entró como asignatura obligatoria en un colegio.', en: 'Minecraft became a compulsory class in a school.' },
+    result: { es: 'Los alumnos aprendían planificación y trabajo en equipo.', en: 'Students learned planning and teamwork.' },
+    lesson: { es: 'Enseñar a jugar bien funciona mejor que prohibir.', en: 'Teaching good play beats banning it.' },
+  },
+];
+
+/* ── Qué podemos aprender de otras realidades ── */
+export const LEARN_BULLETS = [
+  { es: 'Educar funciona mejor que prohibir: las escuelas lo demuestran.', en: 'Educating beats banning: schools prove it.' },
+  { es: 'El acceso importa: sin internet ni medios, nadie juega.', en: 'Access matters: no internet or devices, no play.' },
+  { es: 'Los juegos ya son cultura: escuela, récords y patrimonio.', en: 'Games are already culture: schools, records and heritage.' },
 ];
 
 /* SUBPÁGINA 2 · MIRADA AMPLIA — donde se juega poco, algo falla */
@@ -954,6 +1218,13 @@ export const CATEGORY_IMAGES = {
 /* Créditos de imagen (página Fuentes) */
 export const MEDIA_CREDITS = [
   { file: 'friends-gaming.jpg', label: { es: 'Amigos jugando', en: 'Friends gaming' }, url: 'https://pexels.com/photo/a-person-holding-a-game-controller-7862417', site: 'Pexels' },
+  { file: 'home-hero.jpg', label: { es: 'Arena PvP (imagen de inicio)', en: 'PvP arena (home hero)' }, url: '', site: 'Imagen aportada para Games PvP' },
+  { file: 'prod-bloody-a70.jpg', label: { es: 'Bloody A70 II', en: 'Bloody A70 II' }, url: 'https://www.tradeinn.com/techinn/en/a4-tech-bloody-blazing-a70-gaming-mouse/140841261/p', site: 'Tradeinn' },
+  { file: 'prod-viper-v3-pro.jpg', label: { es: 'Razer Viper V3 Pro', en: 'Razer Viper V3 Pro' }, url: 'https://www.techradar.com/computing/peripherals-accessories/mice/razer-viper-v3-pro-review', site: 'TechRadar' },
+  { file: 'prod-gpx-superlight-2.jpg', label: { es: 'Logitech G PRO X Superlight 2', en: 'Logitech G PRO X Superlight 2' }, url: 'https://prosettings.net/reviews/logitech-g-pro-x-2-superlight/', site: 'ProSettings' },
+  { file: 'prod-wooting-60he.jpg', label: { es: 'Wooting 60HE+', en: 'Wooting 60HE+' }, url: 'https://www.pcgamer.com/wooting-60he-review/', site: 'PCGamer' },
+  { file: 'prod-apex-pro-mini.jpg', label: { es: 'SteelSeries Apex Pro Mini', en: 'SteelSeries Apex Pro Mini' }, url: 'https://www.tomsguide.com/computing/peripherals/steelseries-apex-pro-mini-keyboard-review', site: "Tom's Guide" },
+  { file: 'prod-huntsman-v3-pro.jpg', label: { es: 'Razer Huntsman V3 Pro', en: 'Razer Huntsman V3 Pro' }, url: 'https://www.windowscentral.com/accessories/keyboards/the-razer-huntsman-v3-pro-gaming-keyboard-can-change-on-the-fly-to-suit-your-playstyle', site: 'Windows Central' },
   { file: 'wrist-gaming.webp', label: { es: 'Estiramiento de muñeca', en: 'Wrist stretch' }, url: 'https://plarium.com/en/blog/wrist-pain-from-gaming-exercises-and-prevention-tips', site: 'Plarium' },
   { file: 'minecraft-education.webp', label: { es: 'Minecraft Education en clase', en: 'Minecraft Education in class' }, url: 'https://www.structural-learning.com/post/minecraft-education', site: 'Structural Learning' },
   { file: 'minecraft-education-logo.jpg', label: { es: 'Minecraft Education Edition', en: 'Minecraft Education Edition' }, url: 'https://wallpapers.com/minecraft-education-edition', site: 'Wallpapers.com' },

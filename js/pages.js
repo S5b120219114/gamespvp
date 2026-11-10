@@ -26,6 +26,11 @@ import {
   CATEGORY_IMAGES,
   MEDIA_CREDITS,
   FORM_URL,
+  HOME_HERO,
+  UTIL_SECTIONS,
+  PROPOSAL,
+  COUNTRY_COMPARISON,
+  LEARN_BULLETS,
   ytWatch,
 } from './data.js';
 import { t, getLang } from './i18n.js';
@@ -77,12 +82,14 @@ function renderIntroduccion() {
 
   return `
     <div class="container">
-      ${pageHead({ eyebrow: 'Games PvP', title: t('introLead'), lead: '' })}
+      ${pageHead({ eyebrow: 'Games PvP', title: t('introLead'), lead: t('introTagline') })}
+      ${mediaFigure(HOME_HERO, 'media-figure--hero')}
       <section class="section-block" style="margin-top:0">
         <div class="card" style="padding:clamp(24px,4vw,44px)">
           <p style="font-size:1.18rem;line-height:1.8;margin:0">${esc(t('introText'))}</p>
         </div>
       </section>
+      <div class="btn-row">${goLink(t('introCta'), '/conoce-el-tema')}</div>
       <section class="section-block">
         <h2>Explora</h2>
         <div class="grid grid--3">${cards}</div>
@@ -102,6 +109,9 @@ function introCardBlurb(id) {
       'hollow-knight': 'Guías crazy y rutas Any% explicadas.',
       recomendaciones: 'Postura, salud visual y descansos.',
       perifericos: 'Mouses y teclados recomendados por juego.',
+      'informacion-util': 'Consejos, estrategias y pasos. Lo útil, en corto.',
+      'mi-propuesta': 'Reto, checklist, propuesta y conclusión.',
+      formulario: 'El formulario Punteame: respóndelo.',
     },
     en: {
       'conoce-el-tema': 'Who we are + why you should care. No fluff.',
@@ -112,6 +122,9 @@ function introCardBlurb(id) {
       'hollow-knight': 'Crazy guides and Any% routes explained.',
       recomendaciones: 'Posture, visual health and breaks.',
       perifericos: 'Recommended mice and keyboards per game.',
+      'informacion-util': 'Tips, strategies and steps. Useful stuff, short.',
+      'mi-propuesta': 'Challenge, checklist, proposal and conclusion.',
+      formulario: 'The Punteame form: fill it in.',
     },
   };
   return blurbs[getLang()]?.[id] ?? '';
@@ -152,6 +165,13 @@ function renderTopicBlock(block, index) {
           ${
             block.bullets
               ? `<h3 class="mini-title">${icon('zap')} ${esc(t('topicBulletsTitle'))}</h3>${bulletList(block.bullets)}`
+              : ''
+          }
+          ${
+            block.terms
+              ? `<dl class="term-list">${block.terms
+                  .map((g) => `<div class="term-list__item"><dt>${esc(g.term)}</dt><dd>${esc(pick(g.def))}</dd></div>`)
+                  .join('')}</dl>`
               : ''
           }
           ${block.stats ? `<h3 class="mini-title">${icon('trending')} ${esc(t('topicStatTitle'))}</h3>${statChips(block.stats)}` : ''}
@@ -311,10 +331,12 @@ function renderStreamerCard(item) {
 function renderMiradaAmplia() {
   const sections = [
     { id: 'mundo-paises', label: { es: 'Otros países', en: 'Other countries' } },
+    { id: 'mundo-comparaciones', label: { es: 'Comparaciones', en: 'Comparisons' } },
     { id: 'mundo-escuelas', label: { es: 'Escuelas', en: 'Schools' } },
     { id: 'mundo-records', label: { es: 'Récords y patrimonio', en: 'Records & heritage' } },
     { id: 'mundo-perspectivas', label: { es: 'Perspectivas', en: 'Perspectives' } },
     { id: 'mundo-streamers', label: { es: 'Streamers', en: 'Streamers' } },
+    { id: 'mundo-aprendemos', label: { es: 'Qué aprendemos', en: 'What we learn' } },
   ];
 
   const anchorNav = `
@@ -331,6 +353,23 @@ function renderMiradaAmplia() {
         ${sectionHead(t('miradaWorldTitle'), t('miradaWorldLead'))}
         <div class="grid grid--3">${WORLD_EXAMPLES.map(renderWorldCard).join('')}</div>
         <div class="callout callout--wide">${icon('globe')}<p>${esc(t('miradaWorldNote'))}</p></div>
+      </section>
+
+      <section class="section-block" id="mundo-comparaciones">
+        ${sectionHead(t('miradaCompareTitle'), t('miradaCompareLead'))}
+        <div class="compare-grid">
+          ${COUNTRY_COMPARISON.map(
+            (c) => `
+            <div class="card compare-card">
+              <h3 class="mini-title">${icon('globe')} ${esc(pick(c.place))}</h3>
+              <dl class="compare-list">
+                <div><dt>${esc(t('compareAction'))}</dt><dd>${esc(pick(c.action))}</dd></div>
+                <div><dt>${esc(t('compareResult'))}</dt><dd>${esc(pick(c.result))}</dd></div>
+                <div><dt>${esc(t('compareLesson'))}</dt><dd>${esc(pick(c.lesson))}</dd></div>
+              </dl>
+            </div>`
+          ).join('')}
+        </div>
       </section>
 
       <section class="section-block" id="mundo-escuelas">
@@ -367,6 +406,12 @@ function renderMiradaAmplia() {
           ).join('')}
         </div>
         <p class="gallery__note">${esc(t('miradaGalleryNote'))}</p>
+      </section>
+
+      <section class="section-block" id="mundo-aprendemos">
+        ${sectionHead(t('miradaLearnTitle'), t('miradaLearnLead'))}
+        ${bulletList(LEARN_BULLETS)}
+        <div class="btn-row">${goLink(t('informacionUtil'), '/informacion-util')}</div>
       </section>
 
       <div class="topic-end">
@@ -504,6 +549,129 @@ function renderPerifericos() {
     </div>`;
 }
 
+/* ── INFORMACIÓN ÚTIL ── */
+function renderUtilSection(s) {
+  let content = '';
+  if (s.kind === 'bullets') {
+    content = `${bulletList(s.bullets)}${
+      s.cta ? `<div class="btn-row">${goLink(pick(s.cta.label), s.cta.route)}</div>` : ''
+    }`;
+  } else if (s.kind === 'links') {
+    content = `<div class="grid grid--2">${s.items
+      .map(
+        (it) => `
+      <div class="card">
+        <h3 class="mini-title">${icon('sword')} ${esc(pick(it.title))}</h3>
+        <p class="text-muted">${esc(pick(it.desc))}</p>
+        ${goLink(pick(it.title), it.route, it.anchor)}
+      </div>`
+      )
+      .join('')}</div>`;
+  } else if (s.kind === 'steps') {
+    content = s.blocks
+      .map(
+        (b) => `
+      <div class="card step-block">
+        <h3 class="mini-title">${icon('target')} ${esc(pick(b.title))}</h3>
+        <ol>${b.steps.map((st) => `<li>${esc(pick(st))}</li>`).join('')}</ol>
+      </div>`
+      )
+      .join('');
+  } else if (s.kind === 'examples') {
+    content = `<div class="grid grid--2">${s.items
+      .map(
+        (it) => `
+      <div class="card">
+        <span class="eyebrow">${esc(pick(it.tag))}</span>
+        <h3 class="mini-title">${icon('users')} ${esc(pick(it.title))}</h3>
+        <p class="text-muted">${esc(pick(it.problem))}</p>
+        <div class="callout">${icon('lightbulb')}<p>${esc(pick(it.solution))}</p></div>
+      </div>`
+      )
+      .join('')}</div>`;
+  } else if (s.kind === 'videos') {
+    content = `<div class="grid grid--2">${s.videos.map(videoCard).join('')}</div>${
+      s.image ? mediaFigure(s.image, 'media-figure--card') : ''
+    }`;
+  }
+
+  return `
+    <section class="section-block" id="${s.id}">
+      ${sectionHead(pick(s.title), pick(s.lead))}
+      ${content}
+    </section>`;
+}
+
+function renderInformacionUtil() {
+  const anchorNav = `
+    <nav class="anchor-nav" aria-label="${esc(t('informacionUtil'))}">
+      ${UTIL_SECTIONS.map((s) => `<button type="button" data-scroll="${s.id}">${esc(pick(s.label))}</button>`).join('')}
+    </nav>`;
+
+  return `
+    <div class="container">
+      ${pageHead({ eyebrow: 'Games PvP', title: t('informacionUtil'), lead: t('informacionUtilLead') })}
+      ${anchorNav}
+      ${UTIL_SECTIONS.map(renderUtilSection).join('')}
+      <div class="topic-end">
+        ${icon('heart')}
+        <p>${esc(getLang() === 'es'
+          ? 'Ya tienes lo útil. Ahora, mira el mundo.'
+          : 'You have the useful stuff. Now, take a wider look.')}</p>
+        ${goLink(t('miradaAmplia'), '/mirada-amplia')}
+      </div>
+    </div>`;
+}
+
+/* ── MI PROPUESTA / RECURSOS ── */
+function renderMiPropuesta() {
+  const { reto, checklist, recursos, propuesta, conclusion } = PROPOSAL;
+  return `
+    <div class="container">
+      ${pageHead({ eyebrow: 'Games PvP', title: t('miPropuestaFull'), lead: t('miPropuestaLead') })}
+
+      <section class="section-block" id="propuesta-reto">
+        ${sectionHead(t('propRetoTitle'), '')}
+        <div class="card">
+          <h3 class="mini-title">${icon('trophy')} ${esc(pick(reto.title))}</h3>
+          <p class="text-muted">${esc(pick(reto.lead))}</p>
+          ${bulletList(reto.rules)}
+        </div>
+      </section>
+
+      <section class="section-block" id="propuesta-checklist">
+        ${sectionHead(t('propChecklistTitle'), '')}
+        <div class="card">
+          <h3 class="mini-title">${icon('target')} ${esc(pick(checklist.title))}</h3>
+          <ul class="checklist">${checklist.items.map((i) => `<li>${esc(pick(i))}</li>`).join('')}</ul>
+        </div>
+      </section>
+
+      <section class="section-block" id="propuesta-recursos">
+        ${sectionHead(t('propRecursosTitle'), '')}
+        <div class="btn-row">${recursos.map((r) => goLink(pick(r.label), r.route)).join('')}</div>
+      </section>
+
+      <section class="section-block" id="propuesta-propia">
+        ${sectionHead(t('propPropuestaTitle'), '')}
+        <div class="card">
+          <h3 class="mini-title">${icon('zap')} ${esc(pick(propuesta.title))}</h3>
+          ${propuesta.body.map((p) => `<p>${esc(pick(p))}</p>`).join('')}
+          ${bulletList(propuesta.bullets)}
+          <div class="callout">${icon('lightbulb')}<p>${esc(pick(propuesta.callout))}</p></div>
+        </div>
+      </section>
+
+      <section class="section-block" id="propuesta-conclusion">
+        ${sectionHead(t('propConclusionTitle'), '')}
+        <div class="card">
+          ${conclusion.body.map((p) => `<p>${esc(pick(p))}</p>`).join('')}
+          <div class="btn-row">${goLink(pick(conclusion.cta.label), conclusion.cta.route)}</div>
+        </div>
+      </section>
+    </div>`;
+}
+
 /* ── FORMULARIO (Punteame) ── */
 function renderFormulario() {
   return `
@@ -614,7 +782,9 @@ function renderFuentes() {
       <h2>${esc(t('refsMedia'))}</h2>
       <ul class="ref-list">
         ${MEDIA_CREDITS.map((m) =>
-          refItem({ text: `${pick(m.label)} — assets/${m.file}. ${m.site}.`, url: m.url })
+          m.url
+            ? refItem({ text: `${pick(m.label)} — assets/${m.file}. ${m.site}.`, url: m.url })
+            : `<li>${esc(`${pick(m.label)} — assets/${m.file}. ${m.site}.`)}</li>`
         ).join('')}
       </ul>
     </section>`;
@@ -637,6 +807,7 @@ function renderFuentes() {
 export const PAGES = {
   introduccion: renderIntroduccion,
   'conoce-el-tema': renderConoceElTema,
+  'informacion-util': renderInformacionUtil,
   'mirada-amplia': renderMiradaAmplia,
   'minecraft-pvp': renderMinecraftPvp,
   'minecraft-speedrun': renderSpeedrun,
@@ -644,6 +815,7 @@ export const PAGES = {
   'hollow-knight': renderHollowKnight,
   recomendaciones: renderRecomendaciones,
   perifericos: renderPerifericos,
+  'mi-propuesta': renderMiPropuesta,
   formulario: renderFormulario,
   fuentes: renderFuentes,
 };

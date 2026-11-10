@@ -61,6 +61,7 @@ function metaDescription(id) {
   const map = {
     introduccion: t('introText'),
     'conoce-el-tema': t('conozcamosLead'),
+    'informacion-util': t('informacionUtilLead'),
     'mirada-amplia': t('miradaLead'),
     'minecraft-pvp': t('pvpLead'),
     'minecraft-speedrun': t('speedrunLead'),
@@ -68,6 +69,7 @@ function metaDescription(id) {
     'hollow-knight': t('hollowLead'),
     recomendaciones: t('recomendacionesLead'),
     perifericos: t('perifericosLead'),
+    'mi-propuesta': t('miPropuestaLead'),
     formulario: t('formularioLead'),
     fuentes: t('fuentesLead'),
   };

@@ -26,9 +26,11 @@ const STRINGS = {
     footerRights: 'Todos los derechos reservados.',
     introduccion: 'Introducción',
     conozcamos: 'Conozcamos el tema',
+    informacionUtil: 'Información útil',
     miradaAmplia: 'Mirada amplia',
     recomendaciones: 'Recomendaciones',
     perifericos: 'Periféricos',
+    miPropuesta: 'Mi propuesta',
     formulario: 'Formulario',
     fuentes: 'Fuentes',
 
@@ -54,6 +56,8 @@ const STRINGS = {
 
     /* Componentes */
     btnViewProduct: 'Ver producto',
+    groupMouses: 'Mouses',
+    groupKeyboards: 'Teclados',
     btnDownload: 'Descargar',
     btnSoon: 'Próximamente',
     byCreator: 'por',
@@ -64,6 +68,8 @@ const STRINGS = {
 
     /* Nuevas categorías: interfaz y textos de sección */
     conozcamosLead: 'Qué somos, por qué te importa y un dato a favor. Sin rollo.',
+    informacionUtilLead: 'Consejos, estrategias, pasos y ejemplos: lo útil, en corto.',
+    miPropuestaLead: 'Reto, checklist, recursos, propuesta propia y conclusión.',
     miradaLead: 'Países, escuelas, récords Guinness y streamers. Versión corta.',
     topicHeroEyebrow: 'Toca y explota',
     topicEmblemAria: 'Símbolo de Games PvP: acércate y haz clic para desplegarlo.',
@@ -103,6 +109,21 @@ const STRINGS = {
 
     /* Contenido por página */
     introLead: 'Bienvenido a Games PvP',
+    introTagline: 'Sube de nivel sin bajar tu salud.',
+    introCta: 'Empieza aquí',
+    miradaCompareTitle: 'Comparaciones',
+    miradaCompareLead: 'Prohibir vs. enseñar: dos recetas opuestas.',
+    miradaLearnTitle: 'Qué podemos aprender de otras realidades',
+    miradaLearnLead: 'Tres lecciones que valen para cualquier país.',
+    compareAction: 'Qué hicieron',
+    compareResult: 'Resultado',
+    compareLesson: 'Qué enseña',
+    miPropuestaFull: 'Mi propuesta / Recursos',
+    propRetoTitle: 'Reto o actividad',
+    propChecklistTitle: 'Checklist',
+    propRecursosTitle: 'Recursos útiles',
+    propPropuestaTitle: 'Propuesta propia',
+    propConclusionTitle: 'Conclusión',
     introText: 'Games PvP fue creado para ayudar a nuevos gamers y experimentados a conocer las mecánicas creadas por la comunidad, como técnicas y ayudas para superar diferentes situaciones en videojuegos, y cuenta con diferentes videojuegos y videos e información creada por los mayores jugadores de cada videojuego. Especializado en Minecraft PvP.',
     pvpLead: 'Técnicas, configuraciones y guías de los mejores jugadores de Minecraft PvP: sword, UHC, axe, mace, SMP y texture packs.',
     pvpIntroDesc: 'Empieza aquí: una visión completa del PvP moderno de Minecraft (versiones 1.9 a 1.21).',
@@ -172,9 +193,11 @@ const STRINGS = {
     footerRights: 'All rights reserved.',
     introduccion: 'Introduction',
     conozcamos: 'Let’s learn the topic',
+    informacionUtil: 'Useful info',
     miradaAmplia: 'A wider look',
     recomendaciones: 'Recommendations',
     perifericos: 'Peripherals',
+    miPropuesta: 'My proposal',
     formulario: 'Form',
     fuentes: 'Sources',
 
@@ -200,6 +223,8 @@ const STRINGS = {
 
     /* Components */
     btnViewProduct: 'View product',
+    groupMouses: 'Mice',
+    groupKeyboards: 'Keyboards',
     btnDownload: 'Download',
     btnSoon: 'Coming soon',
     byCreator: 'by',
@@ -210,6 +235,8 @@ const STRINGS = {
 
     /* New categories: interface and section copy */
     conozcamosLead: 'Who we are, why it matters to you, one fact in favour. No fluff.',
+    informacionUtilLead: 'Tips, strategies, steps and examples: the useful stuff, short.',
+    miPropuestaLead: 'Challenge, checklist, resources, own proposal and conclusion.',
     miradaLead: 'Countries, schools, Guinness records and streamers. The short version.',
     topicHeroEyebrow: 'Tap & boom',
     topicEmblemAria: 'Games PvP symbol: hover and click to unfold it.',
@@ -249,6 +276,21 @@ const STRINGS = {
 
     /* Page content */
     introLead: 'Welcome to Games PvP',
+    introTagline: 'Level up without lowering your health.',
+    introCta: 'Start here',
+    miradaCompareTitle: 'Comparisons',
+    miradaCompareLead: 'Banning vs. teaching: two opposite recipes.',
+    miradaLearnTitle: 'What we can learn from other realities',
+    miradaLearnLead: 'Three lessons that hold in any country.',
+    compareAction: 'What they did',
+    compareResult: 'Result',
+    compareLesson: 'What it teaches',
+    miPropuestaFull: 'My proposal / Resources',
+    propRetoTitle: 'Challenge or activity',
+    propChecklistTitle: 'Checklist',
+    propRecursosTitle: 'Useful resources',
+    propPropuestaTitle: 'My own proposal',
+    propConclusionTitle: 'Conclusion',
     introText: 'Games PvP was created to help new and experienced gamers discover community-created mechanics, such as techniques and aids to overcome different situations in video games, and it features different video games along with videos and information created by the top players of each game. Specialized in Minecraft PvP.',
     pvpLead: 'Techniques, settings and guides from the best Minecraft PvP players: sword, UHC, axe, mace, SMP and texture packs.',
     pvpIntroDesc: 'Start here: a complete overview of modern Minecraft PvP (versions 1.9 to 1.21).',
